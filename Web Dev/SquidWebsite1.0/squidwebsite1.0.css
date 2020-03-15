@@ -1,0 +1,90 @@
+body {
+    background-color: black;
+    color: white;
+}
+
+h1 {
+    color: tomato;
+}
+
+img {
+    display: grid;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+#Boop {
+    position: absolute;
+    left: 370px;
+    top: 570px;
+    padding: 40px;
+    /* border: 1px solid white; */
+    border-radius: 50px;
+}
+
+#Boops {
+    position: absolute;
+    left: 757px;
+    top: 588px;
+    padding: 40px;
+    /* border: 1px solid white; */
+    border-radius: 50px;
+}
+
+#yty {
+    position: absolute;
+    top: 1;
+    left: 1000;
+    padding: 10;
+    /* border: 1px solid white; */
+}
+
+#gwasez {
+    position: absolute;
+    top: 360px;
+    left: 130;
+    /* display: none;  */
+    /* background-color: black; */
+    /* background-blend-mode: multiply; */
+}
+
+#boloop {
+    position: absolute;
+    top: 940px;
+    left: 265px;
+    width: 650px;
+    height: 250px;
+    padding: 40px;
+    border-radius: 50000px;
+    transform: rotate(19445deg);
+    opacity: 0;
+}
+
+#myImage {
+    text-size-adjust: \;
+}
+
+#chng {
+    width: 500px;
+    position: absolute;
+    top: 1100px;
+    left: 1300px;
+    display: none; 
+    z-index: 100;
+    display: none;
+}
+
+#fsdh {
+    /* border: 1px solid white; */
+    /* opacity: 0; */
+    padding: 15px;
+    position: absolute;
+    left: 1000;
+    top: 450;
+    width: 139;
+    height: 273;
+    border-radius: 100 800 500 800;
+    opacity: 0;
+}

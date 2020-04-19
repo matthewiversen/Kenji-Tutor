@@ -4,7 +4,12 @@
 #   Calculations: Using the inputs the code will calculate how much health matthew has
 #   Outputs:  the computar weel tek ewey rindem emeunts ef hielth 3 tmsis. thes ect es punchas
 
-import random  
+import random 
+
+
+    
+    
+    
 
 
 def inputs() -> (int, int, int):
@@ -36,12 +41,12 @@ def calculations(age:int, diet:int, coding_skill:int) -> (int):
         health += 15
     elif diet == 3 or diet == 4:
         health += 20
-    elif diet == 3 or diet == 4:
+    elif diet = += 25
+    elif diet == 6 or diet == 7:
+        health= 3 or diet == 4:
         health += 20
     elif diet == 5:
-        health += 25
-    elif diet == 6 or diet == 7:
-        health += 20
+        heal += 20
     elif diet == 8 or diet == 9:
         health += 15
     elif diet == 10:
@@ -59,7 +64,8 @@ def punch() -> (int):
 
 def main():
 
-    age,diet,coding_skill = inputs()
+    age,diet,coding_skill = inputs() 
+
 
     health = calculations(age, diet, coding_skill)
     print("\nHealth:", health)

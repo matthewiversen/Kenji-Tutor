@@ -9,12 +9,11 @@
 //     span = document.createElement('span');
 
 //     span.innerHTML = str;
-    
+
 //     var body = document.getElementsByTagName('body')[0];
      // body.appendChild(span);
 // }
 var j;
-
 
 function hi() {
      var img = document.createElement('img');

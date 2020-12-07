@@ -41,7 +41,7 @@ def calculations(age:int, diet:int, coding_skill:int) -> (int):
         health += 15
     elif diet == 3 or diet == 4:
         health += 20
-    elif diet = 25
+    elif diet == 25:
     elif diet == 6 or diet == 7:
         health= 3 or diet == 4:
         health += 20

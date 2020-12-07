@@ -44,52 +44,67 @@ Speed = 8
 matthew_exists = True
 WHY = 1.0
 
-def LOSE():
-    screen.fill((0,0,0))
-    font = pygame.font.SysFont('comicsans', 100, False, False)
-    text = font.render('YOU LOSE! Score: ' + str(Bottom2), 1, green)
-    screen.blit(text, (400,50))
-    pygame.time.delay(1000)
-    pygame.quit()
+# def LOSE():
+#     screen.fill((0,0,0))
+#     font = pygame.font.SysFont('comicsans', 100, False, False)
+#     text = font.render('YOU LOSE! Score: ' + str(Bottom2), 1, green)
+#     screen.blit(text, (400,50))
+#     pygame.time.delay(1000)
+#     pygame.quit()
 
-def if_hit(playerX:int, playerY:int, dodgeballX:int, dodgeballY:int, Bottom:int, Bottom2:int) -> (None):
+def if_hit(playerX:int, playerY:int, dodgeballX:int, dodgeballY:int) -> (None):
     if playerX >= dodgeballX and playerX <= dodgeballX+30 and playerY <= dodgeballY and playerY >= dodgeballY-30:
         dodgeballX = random.randrange(0, 1140, 30)
         dodgeballY = random.randrange(-120, -60, 1)
-        Bottom2 +=1
-
+        Score()
     
     if playerX+30 >= dodgeballX and playerX+30 <= dodgeballX+30 and playerY <= dodgeballY and playerY >= dodgeballY-30:
         dodgeballX = random.randrange(0, 1140, 30)
         dodgeballY = random.randrange(-120, -60, 1)
-        Bottom2 +=1
-
+        Score()
+    
 
     if playerX >= dodgeballX and playerX <= dodgeballX+30 and playerY-30 <= dodgeballY and playerY-30 >= dodgeballY-30:
         dodgeballX = random.randrange(0, 1140, 30)
         dodgeballY = random.randrange(-120, -60, 1)
-        Bottom2 +=1
-
+        Score()
+    
 
     if playerX+30 >= dodgeballX and playerX+30 <= dodgeballX+30 and playerY-30 <= dodgeballY and playerY-30 >= dodgeballY-30:
         dodgeballX = random.randrange(0, 1140, 30)
         dodgeballY = random.randrange(-120, -60, 1)
-        Bottom2 +=1
+        Score()
 
+    return dodgeballX, dodgeballY
 
-    
+def if_hit_bottom(dodgeballX:int, dodgeballY:int) -> (None):
     if dodgeballY >= 1200:
         dodgeballX = random.randrange(0, 1140, 30)
         dodgeballY = random.randrange(-120, -60, 1)
-        Bottom +=1
+        Num_of_hit_bottom()
+        
+    return dodgeballX, dodgeballY
 
-    
-    
-    return dodgeballX, dodgeballY, Bottom, Bottom2, WHY
 
-def Speedy(WHY:float) -> (None):
-    WHY += 0.2
 
+def Speedy() -> (None):
+    global WHY
+    WHY += 0.03
+
+def Score() ->(None):
+    global Bottom2
+    Bottom2 += 1
+    Speedy()
+
+def Num_of_hit_bottom() -> (None):
+    global Bottom
+    Bottom += 1
+    Speedy()
+
+def move(dodgeballspeed:int) -> (int):
+    dodgeballspeed += WHY
+
+    return dodgeballspeed
 
 while matthew_exists:
     pygame.time.delay(5)
@@ -99,31 +114,17 @@ while matthew_exists:
             pygame.quit()
 
 
-    A,B,Bottom,Bottom2 = if_hit(X,Y,A,B, Bottom, Bottom2, )
-    C,D,Bottom,Bottom2,  = if_hit(X,Y,C,D, Bottom, Bottom2, )
-    E,F,Bottom,Bottom2,  = if_hit(X,Y,E,F, Bottom, Bottom2, )
+    A,B  = if_hit(X,Y,A,B)
+    C,D  = if_hit(X,Y,C,D)
+    E,F  = if_hit(X,Y,E,F)
+    A,B = if_hit_bottom(A,B)
+    C,D = if_hit_bottom(C,D)
+    E,F = if_hit_bottom(E,F)
+    B = move(B)
+    D = move(D)
+    F = move(F)
 
 
-    # if X >=A and X <= A+30 and Y <= B and Y >= B-30:
-    #     A = random.randrange(0, 1140, 30)
-    #     B =(-30)
-    
-    # if X+30 >=A and X+30 <= A+30 and Y <= B and Y >= B-30:
-    #     A = random.randrange(0, 1140, 30)
-    #     B =(-30)
-
-    # if X >=A and X <= A+30 and Y-30 <= B and Y-30 >= B-30:
-    #     A = random.randrange(0, 1140, 30)
-    #     B =(-30)
-
-    # if X+30 >=A and X+3
-    # 0 <= A+30 and Y-30 <= B and Y-30 >= B-30:
-    #     A = random.randrange(0, 1140, 30)
-    #     B =(-30)
-    
-    B += WHY
-    D += WHY
-    F += WHY
 
 
     keys = pygame.key.get_pressed()
@@ -160,9 +161,4 @@ while matthew_exists:
     pygame.display.update()
     
     if Bottom == 3:
-        LOSE()
-
-
-
-
-# pygame.quit()
+        break

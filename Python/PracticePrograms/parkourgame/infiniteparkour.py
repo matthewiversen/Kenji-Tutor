@@ -28,7 +28,16 @@ cloud2 = pygame.image.load('cloud2.png')
 cloud2 = pygame.transform.scale(cloud2,(600,600))
 cloud3 = pygame.image.load('cloud3.png')
 cloud3 = pygame.transform.scale(cloud3,(600,600))
-
+platform1 = pygame.image.load('parkourgameplatform.png')
+platform1 = pygame.transform.scale(platform1,(150,150))
+platform2 = pygame.image.load('parkourgameplatform.png')
+platform2 = pygame.transform.scale(platform2,(150,150))
+platform3 = pygame.image.load('parkourgameplatform.png')
+platform3 = pygame.transform.scale(platform3,(150,150))
+platform4 = pygame.image.load('parkourgameplatform.png')
+platform4 = pygame.transform.scale(platform4,(150,150))
+platform5 = pygame.image.load('parkourgameplatform.png')
+platform5 = pygame.transform.scale(platform5,(150,150))
 
 
 
@@ -40,38 +49,55 @@ def moveingplatforms(platformx, platformspeed):
     platformx += platformspeed
     return platformx
 
+def offscreen(x1,x2,x3,x4,x5):
+    if x1 >= 1000: 
+        x1 = -150
+    if x2 >= 1000: 
+        x2 = -150
+    if x3 >= 1000: 
+        x3 = -150
+    if x4 >= 1000: 
+        x4 = -150
+    if x5 >= 1000: 
+        x5 = -150
+    return x1,x2,x3,x4,x5
+
 # imageload(-70,1,cloud1)
 # imageload(350,100,cloud2)
 # imageload(50,600,cloud3)
 
 while not done:
-    pygame.time.delay(100)
+    pygame.time.delay(50)
+
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             done = True
 
-        # imageload(-70,1,cloud1)
-        # imageload(350,100,cloud2)
-        # imageload(50,600,cloud3)
-    x1 = moveingplatforms(x1, 5)
-    screen.fill((0,255,255))
-    pygame.draw.rect(screen, (246,215,21), (x1,y1,width,height))
-        # # x2 = moveingplatforms(x2, 1)
-        # # x3 = moveingplatforms(x3, 1)
-        # # x4 = moveingplatforms(x4, 1)
-        # # x5 = moveingplatforms(x5, 1)
 
+
+    screen.fill((0,255,255))
+
+    imageload(-70,1,cloud1)
+    imageload(350,100,cloud2)
+    imageload(50,600,cloud3)
+    x1 = moveingplatforms(x1, 5)
+    x2 = moveingplatforms(x2, 5)
+    x3 = moveingplatforms(x3, 5)
+    x4 = moveingplatforms(x4, 5)
+    x5 = moveingplatforms(x5, 5)
+    # pygame.draw.rect(screen, (246,215,21), (x1,y1,height,width))
+
+    x1,x2,x3,x4,x5 = offscreen(x1,x2,x3,x4,x5)
+    
+
+    imageload(x1,100,platform1)
+    imageload(x2,200,platform2)
+    imageload(x3,300,platform3)
+    imageload(x4,400,platform4)
+    imageload(x5,500,platform5)
+    
     pygame.display.flip()
 
 
-# platform1 = pygame.transform.scale(platform1,(150,150))
-# platform2 = pygame.image.load('parkourgameplatform.png').convert()
-# platform2 = pygame.transform.scale(platform2,(150,150))
-# platform3 = pygame.image.load('parkourgameplatform.png').convert()
-# platform3 = pygame.transform.scale(platform3,(150,150))
-# platform4 = pygame.image.load('parkourgameplatform.png').convert()
-# platform4 = pygame.transform.scale(platform4,(150,150))
-# platform5 = pygame.image.load('parkourgameplatform.png').convert()
-# platform5 = pygame.transform.scale(platform5,(150,150))
 
 
